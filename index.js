@@ -28,7 +28,7 @@ var app = express();
 mongoose.connect("mongodb://localhost/eam", { useNewUrlParser: true });
 
 //uses
-// app.use(express.static(__dirname + '/assets/'));
+app.use(express.static(__dirname + '/public/'));
 // app.use(express.static(__dirname + '/user_data/'));
 
 // app.use(require('cookie-parser')());
