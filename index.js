@@ -70,3 +70,42 @@ var httpServer = http.createServer(app);
 httpServer.listen(8080,function(){
    console.log("[INFO] HTTP Server Has Started");
 });
+
+
+/*
+username
+Student:
+AM
+onoma
+epitheto
+etos eisagogis
+idrima
+tmhma
+email
+kinito
+*/
+
+/*
+Book:
+sugrafeas
+kwdikos ston eudoxo
+ISBN
+Lekseis kleidia
+Ekdotis
+*/
+
+/*
+shmeio dianomhs:
+username
+pwd
+diefthinsi
+[id vivlio, ar.diathesimwn]
+wres leitourgies
+onoma katasthmatos
+*/
+
+/*
+dhlwsh:
+list_vivliwn pou dhlwthikan
+periodos dhlwshs
+*/

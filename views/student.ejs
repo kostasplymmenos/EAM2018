@@ -32,8 +32,8 @@
                 <button class="btn btn-default btn-light" type="button" name="signup">Βοήθεια</button>
               </a>
       </ul>
-      
-      
+
+
     </nav>
 
 <!-- Nav tabs -->
@@ -52,6 +52,7 @@
         <a class="nav-link" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="false">Πληροφορίες</a>
     </li>
 </div>
+
 <!-- Tab panes -->
 <div class="tab-content col-9" id="v-pills-tabContent" style="float:left;padding: 0 0 0 0;min-width: 83%;">
     <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab" style="background-image:url(books.jpg);min-height: -webkit-fill-available;
@@ -63,7 +64,7 @@
                     Εδώ μπορείς να δημιουργήσεις λογαριασμό πατώντας "Εγγραφή" πάνω δεξία!
                 </li>
                 <li>
-                    Αν είσαι ήδη εγγεγραμμένος μπορείς να διαχειριστείς το προφίλ σου και να δηλώσεις συγγράμματα στην καρτέλα "Δήλωση Συγγραμμάτων". 
+                    Αν είσαι ήδη εγγεγραμμένος μπορείς να διαχειριστείς το προφίλ σου και να δηλώσεις συγγράμματα στην καρτέλα "Δήλωση Συγγραμμάτων".
                 </li>
                 <li>
                     Μπορείς επίσης να ψάξεις για συγγράμματα στην βάση συγγραμμάτων πατώντας αναζήτηση ή πλοήγηση.
@@ -71,10 +72,10 @@
                 <li>
                     Για οποιαδήποτε πληροφορία, επισκέψου την καρτέλα "Πληροφορίες".
                 </li>
-                
-                
+
+
         </div>
-        
+
     </div>
     <div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-color:rgb(221, 221, 221); background-size: 100% 100%;min-height: -webkit-fill-available;display: flow-root">
         <div id="searchContent"class="p-5"style="background-color:rgba(6, 4, 12, 0.694); color: white; width: 80%; margin-top: 10%; margin-left: 10%; border-radius:10px">
@@ -118,7 +119,7 @@
                     <h5>Results:</h5>
 
                 </div>
-                
+
         </div>
     </div>
     <div class="tab-pane" id="browse" role="tabpanel" aria-labelledby="browse-tab">
@@ -129,7 +130,7 @@
     </div>
 </div>
 
-      
+
 
 <script type="text/javascript">
 $('#home-tab').on('click', function (e) {
@@ -203,7 +204,7 @@ $('#info-tab').on('click', function (e) {
 })
 
 $('#submitSearch').on('click', (e) => {
-        
+
         e.preventDefault()
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
@@ -218,18 +219,18 @@ $('#submitSearch').on('click', (e) => {
         isbn = $('#inputISBN').val()
         publisher = $('#inputPublisher').val()
         console.log(title);
-        
+
         if( title )
             params = params + "?title=" + title
         if( author )
             params = params + "?author=" + author
-            
-            
+
+
         xhttp.open("GET", "/student/search/" + params, true);
         xhttp.send();
     })
 
 </script>
-    
+
 </body>
 </html>
