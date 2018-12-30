@@ -1,0 +1,95 @@
+<% include studentHeader.ejs %>
+
+<!-- Nav tabs -->
+<div class="nav flex-column nav-pills col-2" id="myTab" style="float:left; background-color: rgb(65, 74, 85); height: -webkit-fill-available; padding-right: 0px">
+    <li><br></li>
+    <li class="nav-item" id="lihome">
+        <a class="nav-link" id="home-tab" href="/student">Αρχική Σελίδα</a>
+    </li>
+    <li class="nav-item" id="lisearch">
+        <a class="nav-link active" id="search-tab"  href="/student/search">Αναζήτηση</a>
+    </li>
+    <li class="nav-item" id="librowse">
+        <a class="nav-link" id="browse-tab"  href="/student/browse">Πλοήγηση</a>
+    </li>
+    <li class="nav-item" id="liinfo">
+        <a class="nav-link" id="info-tab" href="/student/info">Πληροφορίες</a>
+    </li>
+</div>
+
+<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-color:rgb(221, 221, 221); background-size: 100% 100%;min-height: -webkit-fill-available;display: flow-root">
+    <div id="searchContent"class="p-5"style="background-color:rgba(6, 4, 12, 0.694); color: white; width: 80%; margin-top: 10%; margin-left: 10%; border-radius:10px">
+            <h4 style="text-align:center">Αναζητείστε εδώ το σύγγραμμα που επιθυμείτε!</h4>
+            <hr>
+            <form id="searchBook" method="" action="" style="width:75%;" class="m-auto">
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputEmail4">Τίτλος</label>
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Book Title">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="inputPassword4">Συγγραφέας</label>
+                        <input type="text" class="form-control" id="inputAuthor" placeholder="Book Author">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputAddress">ISBN</label>
+                      <input type="text" class="form-control" id="inputISBN" placeholder="Book ISBN">
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="inputCity">Εκδότης</label>
+                        <input type="text" class="form-control" id="inputPublisher">
+                      </div>
+                      <div class="form-group col-md-4">
+                        <label for="inputState">Κατηγορία</label>
+                        <select id="inputState" class="form-control">
+                          <option selected>Choose...</option>
+                          <option>...</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-md-2">
+                        <label for="inputZip">Κωδικός Βιβλίου</label>
+                        <input type="text" class="form-control" id="inputNo">
+                      </div>
+                    </div>
+                    <button id="submitSearch" type="submit" class="btn btn-primary">Αναζήτηση</button>
+                  </form>
+            <div id="searchResults" hidden>
+                <h5>Results:</h5>
+
+            </div>
+            
+    </div>
+</div>
+
+<script>
+
+$('#submitSearch').on('click', (e) => {
+        
+        e.preventDefault()
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("searchResults").innerHTML = this.responseText;
+                document.getElementById("searchResults").removeAttribute('hidden')
+            }
+        };
+        params = "book"
+        title = $('#inputTitle').val()
+        author = $('#inputAuthor').val()
+        isbn = $('#inputISBN').val()
+        publisher = $('#inputPublisher').val()
+        console.log(title);
+        
+        if( title )
+            params = params + "?title=" + title
+        if( author )
+            params = params + "?author=" + author
+            
+            
+        xhttp.open("GET", "/student/search/" + params, true);
+        xhttp.send();
+    })
+
+</script>
