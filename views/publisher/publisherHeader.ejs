@@ -23,12 +23,15 @@
   </form>
 
   <ul style="margin-bottom:0px">
+    <% if(!options.signedIn){ %>
         <a href="/help">
             <button class="btn btn-default btn-light" type="button" name="signup">Εγγραφή</button>
           </a>
+    <% } else {%>
           <a href="/help">
             <button class="btn btn-default btn-light" type="button" name="signup">Προφίλ</button>
           </a>
+    <% } %>
           <a href="/help">
             <button class="btn btn-default btn-light" type="button" name="signup">Βοήθεια</button>
           </a>

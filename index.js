@@ -13,7 +13,7 @@ var methodOverride        = require("method-override");
 
 var homeRoutes = require('./lib/routes/home.js')
 var studentRoutes = require('./lib/routes/student.js')
-// var homeRoutes = require('./lib/routes/home.js')
+var publisherRoutes = require('./lib/routes/publisher.js')
 
 //vars neededed for ssl
 // var privateKey  = fs.readFileSync("./open_ssl/server.key", 'utf8');
@@ -57,13 +57,10 @@ app.set('view engine', 'ejs');
 // passport.deserializeUser(User.deserializeUser());
 
 //using controllers required above
+app.use(publisherRoutes)
 app.use(studentRoutes)
 app.use(homeRoutes)
 
-// app.use(homeController)
-// app.use(studentController)
-
-//app.use(publisherController)
 //vars to run http / https (on different ports)
 var httpServer = http.createServer(app);
 
