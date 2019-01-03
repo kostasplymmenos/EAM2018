@@ -9,3 +9,21 @@ li { color: white; }
     background-color:#0b3655;
     border-color:#0b3655;
 }
+
+.modal-backdrop
+{
+    opacity:0.5 !important;
+}
+
+.fade-scale {
+    transform: scale(0.3);
+    opacity: 0;
+    -webkit-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+  }
+
+  .fade-scale.in {
+    opacity: 1;
+    transform: scale(1);
+  }

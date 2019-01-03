@@ -1,0 +1,109 @@
+<% include studentHeader.ejs %>
+
+<!-- Nav tabs -->
+<div class="nav flex-column nav-pills col-2" id="myTab" style="float:left; background-color: rgb(65, 74, 85); height: -webkit-fill-available; padding-right: 0px">
+    <li><br></li>
+    <li class="nav-item" id="lihome">
+        <a class="nav-link" id="home-tab" href="/student">Αρχική Σελίδα</a>
+    </li>
+    <li class="nav-item" id="lisearch">
+        <a class="nav-link active" id="search-tab"  href="/student/search">Αναζήτηση</a>
+    </li>
+    <li class="nav-item" id="librowse">
+        <a class="nav-link" id="browse-tab"  href="/student/browse">Πλοήγηση</a>
+    </li>
+    <li class="nav-item" id="liinfo">
+        <a class="nav-link" id="info-tab" href="/student/info">Πληροφορίες</a>
+    </li>
+</div>
+
+<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-color:rgb(221, 221, 221); background-size: 100% 100%;min-height: -webkit-fill-available;display: flow-root">
+    <div id="searchContent"class="p-5"style="background-color:rgba(6, 4, 12, 0.694); color: white; width: 80%; margin-top: 10%; margin-left: 10%; border-radius:10px">
+        <h4 style="text-align:center">Γραφτείτε στην εφαρμογή!</h4>
+        <hr>
+        <form id="signupForm" method="" action="" style="width:75%;" class="m-auto">
+            <div class="form-group row">
+                <label for="inputEmail3" class="col-sm-3 col-form-label">Διεύθυνση email</label>
+                <div class="col-sm-9">
+                <input type="email" class="form-control" id="inputEmail3" placeholder="Email" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword3" class="col-sm-3 col-form-label">Κωδικός Πρόσβασης</label>
+                <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword3" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Επαλήθευση</label>
+                <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Όνομα</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Επίθετο</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Πανεπιστήμιο</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Τμήμα</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Αριθμός Μητρώου</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Password" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword4" class="col-sm-3 col-form-label">Κινητό</label>
+                <div class="col-sm-9">
+                <input type="text" class="form-control" id="inputPassword4" placeholder="Password">
+                </div>
+            </div>
+            <fieldset class="form-group">
+                <div class="row">
+                <legend class="col-form-label col-sm-3 pt-0">Επίπεδο Σπουδών</legend>
+                <div class="col-sm-9">
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                        Προπτυχιακό
+                    </label>
+                    </div>
+                    <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                        Μεταπτυχιακό
+                    </label>
+                    </div>
+                </div>
+                </div>
+            </fieldset>
+            
+            <div class="form-group row">
+                <div class="col-sm-10">
+                <button type="submit" class="btn btn-light">Εγγραφή</button>
+                </div>
+            </div>
+            </form>
+            
+    </div>
+</div>
+
+<% include studentFooter.ejs %>
