@@ -33,17 +33,21 @@
             <button class="btn btn-default btn-light" type="button" id="signInButton"name="signup">Σύνδεση</button>
           
     <% } else {%>
-          <a href="/help">
+          <a href="/student/logout">
+            <button class="btn btn-default btn-light" type="button" name="signup">Αποσύνδεση</button>
+          </a>
+          <a href="/student/profile">
             <button class="btn btn-default btn-light" type="button" name="signup">Προφίλ</button>
           </a>
     <% } %>
-          <a href="/help">
+          <a href="/student/help">
             <button class="btn btn-default btn-light" type="button" name="signup">Βοήθεια</button>
           </a>
   </ul>
 
 
 </nav>
+
 
 <% include signInModalStudent.ejs %>
 

@@ -6,8 +6,8 @@ a { color: white; }
 li { color: white; } 
 
 .btn-primary {
-    background-color:#0b3655;
-    border-color:#0b3655;
+    background-color:#0b3655ed;
+    border-color:#0b3655ed;
 }
 
 .modal-backdrop
