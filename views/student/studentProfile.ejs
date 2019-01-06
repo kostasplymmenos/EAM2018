@@ -1,0 +1,79 @@
+<% include studentHeader.ejs %>
+
+<!-- Nav tabs -->
+<div class="nav flex-column nav-pills col-2" id="myTab" style="float:left; background-color: rgb(65, 74, 85); height: -webkit-fill-available; padding-right: 0px">
+    <li><br></li>
+    <li class="nav-item" id="lihome">
+        <a class="nav-link" id="home-tab" href="/student">Αρχική Σελίδα</a>
+    </li>
+    <li class="nav-item" id="lisearch">
+        <a class="nav-link" id="search-tab"  href="/student/search">Αναζήτηση</a>
+    </li>
+    <li class="nav-item" id="librowse">
+        <a class="nav-link" id="browse-tab"  href="/student/browse">Πλοήγηση</a>
+    </li>
+    <% if(options.signedIn){ %>
+        <li class="nav-item" id="liregbooks">
+            <a class="nav-link" id="regbooks-tab"  href="/student">Δήλωση Συγγραμμάτων</a>
+        </li>
+        <li class="nav-item" id="lireghistory">
+            <a class="nav-link" id="reghistory-tab"  href="/student">Ιστορικό Δηλώσεων</a>
+        </li>
+    <% } %>  
+    <li class="nav-item" id="liinfo">
+        <a class="nav-link" id="info-tab" href="/student/info">Πληροφορίες</a>
+    </li>
+</div>
+
+<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-color:rgb(221, 221, 221); background-size: 100% 100%;min-height: -webkit-fill-available;display: flow-root">
+    <div id="searchContent"class="p-5"style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 80%; margin-top: 5%; margin-left: 10%; border-radius:10px">
+        <h4 style="text-align:center">Η σελίδα προφίλ σας!</h4>
+        <hr>
+        
+        <div class="col-11 m-auto">
+            <table style="width:100%">
+                <tbody>
+                <tr >
+                    <td class="" style="width:30%">Αριθμός Μητρώου</td>
+                    <td class=""style="width:70%"><%=options.user.regNumber%></td>       
+                </tr>
+                <tr>
+                    <td class="" style="width:30%">Διεύθυνση email</td>
+                    <td class=""style="width:70%"><%=options.user.email%></td>   
+                
+                </tr>
+                <tr >
+                    <td class="" style="width:30%">'Ονομα</td>
+                    <td class=""style="width:70%"><%=options.user.firstname%></td>   
+                
+                </tr>
+                <tr>
+                    <td class="" style="width:30%">Επώνυμο</td>
+                    <td class=""style="width:70%"><%=options.user.lastName%></td>   
+                
+                </tr>
+                <tr>
+                    <td class="" style="width:30%">Πανεπιστήμιο</td>
+                    <td class=""style="width:70%"><%=options.user.university%></td>   
+                
+                </tr>
+                <tr>
+                    <td class="" style="width:30%">Τμήμα</td>
+                    <td class=""style="width:70%"><%=options.user.department%></td>   
+                
+                </tr>
+                <tr>
+                    <td class="" style="width:30%">Κινητό Τηλέφωνο</td>
+                    <td class=""style="width:70%"><%=options.user.telephone%></td>   
+                
+                </tr>
+                </tbody>
+                </table>
+        </div>
+        
+            
+    </div>
+</div>
+
+
+<% include studentFooter.ejs %>

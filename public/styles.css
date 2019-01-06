@@ -23,7 +23,20 @@ li { color: white; }
     transition: all .25s ease-out;
   }
 
-  .fade-scale.in {
+.fade-scale.in {
     opacity: 1;
     transform: scale(1);
-  }
+}
+
+tbody td{
+    padding: 10px;
+}
+
+tbody tr:nth-child(odd){
+    background-color: #545c66;
+    color: rgb(255, 255, 255);
+}
+tbody tr:nth-child(even){
+    background-color: #666e76;
+    color: rgb(255, 255, 255);
+}

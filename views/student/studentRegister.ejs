@@ -7,7 +7,7 @@
         <a class="nav-link" id="home-tab" href="/student">Αρχική Σελίδα</a>
     </li>
     <li class="nav-item" id="lisearch">
-        <a class="nav-link active" id="search-tab"  href="/student/search">Αναζήτηση</a>
+        <a class="nav-link" id="search-tab"  href="/student/search">Αναζήτηση</a>
     </li>
     <li class="nav-item" id="librowse">
         <a class="nav-link" id="browse-tab"  href="/student/browse">Πλοήγηση</a>
@@ -57,7 +57,7 @@
             <div class="form-group row">
                 <label for="inputLastName" class="col-sm-3 col-form-label">Επίθετο</label>
                 <div class="col-sm-9">
-                    <input type="text" class="form-control" id="inputLastName" placeholder="Last Name" required>
+                    <input name="lastname" type="text" class="form-control" id="inputLastName" placeholder="Last Name" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -82,6 +82,12 @@
                 <label for="inputTel" class="col-sm-3 col-form-label">Κινητό</label>
                 <div class="col-sm-9">
                     <input name="tel" type="text" class="form-control" id="inputTel" placeholder="Mobile Number">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputBday" class="col-sm-3 col-form-label">Ημ Γέννησης</label>
+                <div class="col-sm-9">
+                    <input name="bday" type="date" class="form-control" id="inputBday" placeholder="Birth Date">
                 </div>
             </div>
             <fieldset class="form-group">
