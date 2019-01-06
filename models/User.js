@@ -11,10 +11,13 @@ var UserSchema = new mongoose.Schema({
     telephone: String,
     university: String,
     department: String,
-    regNumber: String
-    // books : [{
-    //   type: Schema.Types.ObjectId, ref: "Book"
-    // }]
+    regNumber: String,
+    courses: [{
+        type: String
+    }],
+    books : [{
+      type: Schema.Types.ObjectId, ref: "Book"
+    }]
 });
 UserSchema.plugin(passportLocalMongoose,{usernameField:"email"});
 
