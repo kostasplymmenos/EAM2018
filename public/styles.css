@@ -40,3 +40,22 @@ tbody tr:nth-child(even){
     background-color: #666e76;
     color: rgb(255, 255, 255);
 }
+
+.book-listing:nth-child(odd){
+    background-color: #545c66;
+    color: rgb(255, 255, 255);
+    margin: auto;
+    padding: 2%;
+}
+.book-listing:nth-child(even){
+    background-color: #666e76;
+    color: rgb(255, 255, 255);
+    margin: auto;
+    padding: 2%;
+}
+details summary::-webkit-details-marker {
+    display:none;
+  }
+details summary:focus {
+    outline: none;
+}  

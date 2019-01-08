@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
 
-var UserSchema = new mongoose.Schema({
+var BookSchema = new mongoose.Schema({
     isbn    : String,
     eudoxus_id: String,
     author: String,
@@ -16,4 +16,4 @@ var UserSchema = new mongoose.Schema({
     
 });
 
-module.exports = mongoose.model("Book", UserSchema);
+module.exports = mongoose.model("Book", BookSchema);

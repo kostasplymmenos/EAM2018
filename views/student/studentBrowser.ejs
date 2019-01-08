@@ -25,55 +25,103 @@
     </li>
 </div>
 
-<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-color:rgb(221, 221, 221); background-size: 100% 100%;min-height: -webkit-fill-available;display: flow-root">
+<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab"style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%; display:flow-root">
     <div id="searchContent"class="p-5"style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 80%; margin-top: 5%; margin-left: 10%; border-radius:10px">
         <h4 style="text-align:center">Η σελίδα πλοήγησης!</h4>
         <hr>
-        
-        <div class="col-11 m-auto">
-            <table style="width:100%">
-                <tbody>
-                <tr >
-                    <td class="" style="width:30%">Αριθμός Μητρώου</td>
-                    <td class=""style="width:70%">text</td>       
-                </tr>
-                <tr>
-                    <td class="" style="width:30%">Διεύθυνση email</td>
-                    <td class=""style="width:70%">text</td>   
+        <div class="form-row text-centered">
+            <div class="form-group col-md-4">
+                <label for="inputState">Κατηγορία</label>
+                <select name="category" class="form-control" id="categorySelect">
+                    <option value="all">All</option>
+                    <option value="Φυσική">ΦΥΣΙΚΗ</option>
+                    <option value="Maths">ΜΑΘΗΜΑΤΙΚΑ</option>
+                    <option value="Chemistry">ΧΗΜΕΙΑ</option>
+                    <option value="ΠΛΗΡΟΦΟΡΙΚΗ">ΠΛΗΡΟΦΟΡΙΚΗ</option>
+                    <option value="ΟΙΚΟΝΟΜΙΚΑ">ΟΙΚΟΝΟΜΙΚΑ</option>
+                    <option value="ΒΙΟΛΟΓΙΑ">ΒΙΟΛΟΓΙΑ</option>
+                    <option value="ΟΙΚΟΝΟΜΙΚΑ">ΟΙΚΟΝΟΜΙΚΑ</option>
+                    <option value="ΦΙΛΟΣΟΦΙΑ">ΦΙΛΟΣΟΦΙΑ</option>
+                    <option value="ΦΙΛΟΛΟΓΙΑ">ΦΙΛΟΛΟΓΙΑ</option>
+                    <option value="ΚΟΙΝΩΝΙΟΛΟΓΙΑ">ΚΟΙΝΩΝΙΟΛΟΓΙΑ</option>
+                    <option value="ΘΕΟΛΟΓΙΑ">ΘΕΟΛΟΓΙΑ</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                    <label for="inputState">Εκδότης</label>
+                    <select name="category" class="form-control" id="categorySelect">
+                        <option value="physics">All</option>
+                        <option value="physics">physics</option>
+                        <option value="Maths">Maths</option>
+                        <option value="Chemistry">Chemistry</option>
+                    </select>
                 
-                </tr>
-                <tr >
-                    <td class="" style="width:30%">'Ονομα</td>
-                    <td class=""style="width:70%">text</td>   
-                
-                </tr>
-                <tr>
-                    <td class="" style="width:30%">Επώνυμο</td>
-                    <td class=""style="width:70%">text</td>   
-                
-                </tr>
-                <tr>
-                    <td class="" style="width:30%">Πανεπιστήμιο</td>
-                    <td class=""style="width:70%">text</td>   
-                
-                </tr>
-                <tr>
-                    <td class="" style="width:30%">Τμήμα</td>
-                    <td class=""style="width:70%">text</td>   
-                
-                </tr>
-                <tr>
-                    <td class="" style="width:30%">Κινητό Τηλέφωνο</td>
-                    <td class=""style="width:70%">text</td>   
-                
-                </tr>
-                </tbody>
-                </table>
+            </div>
+
+            <div class="form-group col-md-4">
+                    <label for="inputState">Τμήμα Πανεπιστημίου</label>
+                    <select name="category" class="form-control" id="categorySelect">
+                        <option value="physics">All</option>
+                        <option value="physics">physics</option>
+                        <option value="Maths">Maths</option>
+                        <option value="Chemistry">Chemistry</option>
+                    </select>
+            
+            </div>
+        </div>
+        <hr>
+        <div id="browseResults">
+
         </div>
         
             
     </div>
 </div>
+
+<script>
+$(document).ready( (e) => {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var bookArray = JSON.parse(this.responseText);
+            bookArray.forEach(book => {
+                $('#browseResults').append('<details class="book-listing"><summary><i class="fas fa-2x fa-book">  ' + book.title + '</i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary><p>details...</p></details>')  
+            });
+            
+        }
+    };
+    xhttp.open("GET", "/student/browse/books?", true);
+    xhttp.send();
+})
+
+$('#categorySelect').on('change', (e) => {
+        
+        e.preventDefault()
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                $(".book-listing" ).remove();
+                var bookArray = JSON.parse(this.responseText);
+                bookArray.forEach(book => {
+                    $('#browseResults').append('<details class="book-listing"><summary><i class="fas fa-2x fa-book">  ' + book.title + '</i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary><p>details...</p></details>')  
+                });
+                
+            }
+        };
+        params = "books"
+        category = $('#categorySelect').val()
+        
+        console.log(category);
+        
+        if( category && (category != 'all'))
+            params = params + "?category=" + category
+            
+        xhttp.open("GET", "/student/browse/" + params, true);
+        xhttp.send();
+    })
+
+</script>
 
 
 <% include studentFooter.ejs %>
