@@ -7,15 +7,13 @@
         <a class="nav-link" id="home-tab" href="/student">Αρχική Σελίδα</a>
     </li>
     <li class="nav-item" id="lisearch">
-        <a class="nav-link active" id="search-tab"  href="/student/search">Αναζήτηση</a>
+        <a class="nav-link active" id="search-tab"  href="/student/search">Αναζήτηση Συγγραμμάτων</a>
     </li>
     <li class="nav-item" id="librowse">
-        <a class="nav-link" id="browse-tab"  href="/student/browse">Πλοήγηση</a>
+        <a class="nav-link " id="browse-tab"  href="/student/browse">Πλοήγηση & Δήλωση Συγγραμμάτων</a>
     </li>
     <% if(options.signedIn){ %>
-        <li class="nav-item" id="liregbooks">
-            <a class="nav-link" id="regbooks-tab"  href="/student">Δήλωση Συγγραμμάτων</a>
-        </li>
+        
         <li class="nav-item" id="lireghistory">
             <a class="nav-link" id="reghistory-tab"  href="/student">Ιστορικό Δηλώσεων</a>
         </li>
@@ -99,8 +97,16 @@ $('#submitSearch').on('click', (e) => {
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 var bookArray = JSON.parse(this.responseText);
+                $(".book-listing" ).remove();
+                $(".resultsNum" ).remove();
+                $('#browseResults').append(`<h6 class="resultsNum">Βρέθηκαν ${bookArray.length} συγγράμματα</h6>`)
                 bookArray.forEach(book => {
-                    $('#browseResults').append('<details class="book-listing"><summary><i class="fas fa-2x fa-book">  ' + book.title + '</i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary><p>details...</p></details>')  
+                    $('#browseResults').append(
+                        `<details class="book-listing">
+                            <summary><i class="fas fa-2x fa-book">   ${book.title} </i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary>
+                            <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
+                            Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
+                        </details>`)  
                 });
             }
             else if (this.readyState == 4 && this.status == 404) {

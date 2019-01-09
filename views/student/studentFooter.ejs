@@ -2,6 +2,28 @@
 $('#signInButton').on('click',function(e){
     $('#signInModal').modal()
 })
+
+function createErrorAlert(e,text){
+    e.preventDefault()
+    $('#alertBox').removeClass()
+    $('#alertBox').addClass('alertError')
+    $('#alertText').text(text)
+    $('#alertBox').attr('hidden',false)
+    $('#alertBox').css('display','block');
+    $('#alertBox').fadeOut(3000)
+    
+}
+
+function createSuccessAlert(e,text){
+    e.preventDefault()
+    $('#alertBox').removeClass()
+    $('#alertBox').addClass('alertSuccess')
+    $('#alertText').text(text)
+    $('#alertBox').attr('hidden',false)
+    $('#alertBox').css('display','block');
+    $('#alertBox').fadeOut(3000)
+    
+}
 </script>
 
 </body>

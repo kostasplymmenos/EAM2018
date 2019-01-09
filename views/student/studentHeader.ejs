@@ -42,9 +42,9 @@
             <button class="btn btn-default btn-light" type="button" name="signup">Προφίλ</button>
           </a>
     <% } %>
-          <a href="/student/help">
-            <button class="btn btn-default btn-light" type="button" name="signup">Βοήθεια</button>
-          </a>
+          
+            <button class="btn btn-default btn-light" type="button" name="signup" onclick="createErrorAlert(event,'Coming soon')">Βοήθεια</button>
+          
   </ul>
 
 
@@ -52,5 +52,9 @@
 
 
 <% include signInModalStudent.ejs %>
+
+<div id="alertBox"class="" hidden>
+  <h6 id="alertText">This is an alert box.</h6>
+</div>
 
 
