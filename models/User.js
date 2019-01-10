@@ -15,8 +15,11 @@ var UserSchema = new mongoose.Schema({
     courses: [{
         type: String
     }],
-    books : [{
-      type: Schema.Types.ObjectId, ref: "Book"
+    bookSubmissions : [{
+        timestamp: Date,
+        bookIds: [{
+            type: Schema.Types.ObjectId, ref: "Book"
+        }]
     }]
 });
 UserSchema.plugin(passportLocalMongoose,{usernameField:"email"});

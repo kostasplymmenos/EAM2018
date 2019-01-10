@@ -14,7 +14,7 @@
     </li>
     <% if(options.signedIn){ %>
         <li class="nav-item" id="lireghistory">
-            <a class="nav-link" id="reghistory-tab"  href="/student">Ιστορικό Δηλώσεων</a>
+            <a class="nav-link" id="reghistory-tab"  href="/student/history">Ιστορικό Δηλώσεων</a>
         </li>
     <% } %>  
     <li class="nav-item" id="liinfo">
@@ -69,11 +69,15 @@
             
             </div>
             <div class="col-md-1"></div>
-            
-            <button style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-primary">Δήλωση</button>
+            <%if(options.signedIn){%>
+                <button style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light" id="registerBooks">Δήλωση</button>
+            <%} else {%>
+                <button disabled style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light tooltip">Δήλωση <span class="tooltiptext">Δεν είστε συνδεδεμένος </span></button>
+            <% } %>        
         </div>
         <hr>
-        <div id="browseResults">
+        <h6 id="numBooksChecked">Έχετε επιλέξει 0 συγγράμματα</h6>
+        <div id="browseResults" style="border-radius:10px">
 
         </div>
         
@@ -83,6 +87,7 @@
 
 <script>
 $(document).ready( (e) => {
+
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -94,21 +99,27 @@ $(document).ready( (e) => {
                         <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
                         Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
                         <hr>
-                        <input type="checkbox" id="${book.title}_id" name="${book.title}">
-                        <label for="${book.title}_id">Δήλωση</label>
-                    </details>`)  
+                        <input type="checkbox" class="book-checked" id="${book.isbn}_id" name="${book.isbn}">
+                        <label for="${book.isbn}_id">Δήλωση</label>
+                    </details>`)
+                    
             });
+            //add event listener for checkboxes after they are created above
+            $('.book-checked').on('click', (ev) => {
+                $('#numBooksChecked').text(`Έχετε επιλέξει ${$('input[type="checkbox"]:checked').length} συγγράμματα`)
+            })
             
         }
         
     };
     xhttp.open("GET", "/student/browse/books?", true);
     xhttp.send();
+
 })
 
-$('#categorySelect').on('change', (e) => {
+$('#categorySelect').on('change', (ev) => {
         
-        e.preventDefault()
+        ev.preventDefault()
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -116,12 +127,20 @@ $('#categorySelect').on('change', (e) => {
                 var bookArray = JSON.parse(this.responseText);
                 bookArray.forEach(book => {
                     $('#browseResults').append(
-                        `<details class="book-listing">
-                            <summary><i class="fas fa-2x fa-book">   ${book.title} </i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary>
-                            <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
-                            Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
-                        </details>`)  
+                    `<details class="book-listing">
+                        <summary><i class="fas fa-2x fa-book">   ${book.title} </i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary>
+                        <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
+                        Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
+                        <hr>
+                        <input type="checkbox" class="book-checked" id="${book.isbn}_id" name="${book.isbn}">
+                        <label for="${book.isbn}_id">Δήλωση</label>
+                    </details>`)    
                 });
+
+            //add event listener for checkboxes after they are created above
+            $('.book-checked').on('click', (ev) => {
+                $('#numBooksChecked').text(`Έχετε επιλέξει ${$('input[type="checkbox"]:checked').length} συγγράμματα`)
+            })
                 
             }
         };
@@ -135,6 +154,27 @@ $('#categorySelect').on('change', (e) => {
             
         xhttp.open("GET", "/student/browse/" + params, true);
         xhttp.send();
+    })
+
+    $('#registerBooks').on('click', ev => {
+        ev.preventDefault()
+        var books = []
+        $('input[type="checkbox"]:checked').each((i,obj) => {
+            books.push( obj.getAttribute('name') );
+        })
+        
+        $.ajax({
+            type: "POST",
+            url: '/student/registerBooks',
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8', 
+            data: JSON.stringify(books),
+            success: function(response) {
+                console.log(response);
+                
+                createSuccessAlert('Η δήλωση συγγραμμάτων έγινε με επιτυχία')
+            }
+    });
     })
 
 </script>

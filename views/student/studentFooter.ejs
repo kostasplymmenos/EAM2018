@@ -14,8 +14,7 @@ function createErrorAlert(e,text){
     
 }
 
-function createSuccessAlert(e,text){
-    e.preventDefault()
+function createSuccessAlert(text){
     $('#alertBox').removeClass()
     $('#alertBox').addClass('alertSuccess')
     $('#alertText').text(text)
