@@ -45,13 +45,13 @@ tbody tr:nth-child(even){
     background-color: #545c66;
     color: rgb(255, 255, 255);
     margin: auto;
-    padding: 2%;
+    padding: 1%;
 }
 .book-listing:nth-child(even){
     background-color: #666e76;
     color: rgb(255, 255, 255);
     margin: auto;
-    padding: 2%;
+    padding: 1%;
 }
 details summary::-webkit-details-marker {
     display:none;

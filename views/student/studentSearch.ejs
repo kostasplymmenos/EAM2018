@@ -106,7 +106,7 @@ $('#submitSearch').on('click', (e) => {
                 bookArray.forEach(book => {
                     $('#browseResults').append(
                         `<details class="book-listing">
-                            <summary><i class="fas fa-2x fa-book">   ${book.title} </i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary>
+                            <summary><img width="32" height="32"src="/book-flat.png"></img> ${book.title} </i><i style="float:right" class="fas fa-1x fa-caret-down"></i></summary>
                             <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
                             Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
                         </details>`)  

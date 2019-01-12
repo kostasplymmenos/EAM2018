@@ -95,7 +95,7 @@ $(document).ready( (e) => {
             bookArray.forEach(book => {
                 $('#browseResults').append(
                     `<details class="book-listing">
-                        <summary><i class="fas fa-2x fa-book">   ${book.title} </i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary>
+                        <summary><img width="32" height="32"src="/book-flat.png"></img>   ${book.title} </i><i style="float:right" class="fas fa-1x fa-caret-down"></i></summary>
                         <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
                         Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
                         <hr>
@@ -105,7 +105,7 @@ $(document).ready( (e) => {
                     
             });
             //add event listener for checkboxes after they are created above
-            $('.book-checked').on('click', (ev) => {
+            $('.book-checked').on('click', ev => {
                 $('#numBooksChecked').text(`Έχετε επιλέξει ${$('input[type="checkbox"]:checked').length} συγγράμματα`)
             })
             
@@ -128,7 +128,7 @@ $('#categorySelect').on('change', (ev) => {
                 bookArray.forEach(book => {
                     $('#browseResults').append(
                     `<details class="book-listing">
-                        <summary><i class="fas fa-2x fa-book">   ${book.title} </i><i style="float:right" class="fas fa-2x fa-caret-down"></i></summary>
+                        <summary> <img width="32" height="32"src="/book-flat.png"></img>  ${book.title} </i><i style="float:right" class="fas fa-1x fa-caret-down"></i></summary>
                         <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
                         Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
                         <hr>
@@ -158,6 +158,8 @@ $('#categorySelect').on('change', (ev) => {
 
     $('#registerBooks').on('click', ev => {
         ev.preventDefault()
+        if(!confirm('Είστε σίγουρος ότι θελετε να κάνετε δήλωση συγγραμμάτων;'))
+            return
         var books = []
         $('input[type="checkbox"]:checked').each((i,obj) => {
             books.push( obj.getAttribute('name') );
@@ -172,7 +174,7 @@ $('#categorySelect').on('change', (ev) => {
             success: function(response) {
                 console.log(response);
                 
-                createSuccessAlert('Η δήλωση συγγραμμάτων έγινε με επιτυχία')
+                createSuccessAlert('Η δήλωση συγγραμμάτων έγινε με επιτυχία. Μπορείτε να επαληθεύσετε την δήλωση σας στην καρτέλα "Ιστορικό δηλώσεων"')
             }
     });
     })

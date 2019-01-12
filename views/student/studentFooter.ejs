@@ -3,14 +3,20 @@ $('#signInButton').on('click',function(e){
     $('#signInModal').modal()
 })
 
+$(document).ready(()=>{
+    var error = $('#err').text()
+    if(error)
+        createErrorAlert(null,error)
+}) 
+
 function createErrorAlert(e,text){
-    e.preventDefault()
+    //e.preventDefault()
     $('#alertBox').removeClass()
     $('#alertBox').addClass('alertError')
     $('#alertText').text(text)
     $('#alertBox').attr('hidden',false)
     $('#alertBox').css('display','block');
-    $('#alertBox').fadeOut(3000)
+    setTimeout(()=>{$('#alertBox').fadeOut(2000)},3000)
     
 }
 
@@ -20,7 +26,8 @@ function createSuccessAlert(text){
     $('#alertText').text(text)
     $('#alertBox').attr('hidden',false)
     $('#alertBox').css('display','block');
-    $('#alertBox').fadeOut(3000)
+    setTimeout(()=>{$('#alertBox').fadeOut(2000)},3000)
+    
     
 }
 </script>

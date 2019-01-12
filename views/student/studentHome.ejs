@@ -1,7 +1,11 @@
 <% include studentHeader.ejs %>
 
+<% if(error){ %>
+       <p id="err" style="display:none"><%=error%></p>
+<% } %>
+
 <!-- Nav tabs (not in header to specify active tab)-->
-<div class="nav flex-column nav-pills col-2" id="myTab" style="float:left; background-color: rgb(65, 74, 85); height: -webkit-fill-available; padding-right: 0px">
+<div class="nav flex-column nav-pills col-2" id="myTab" style="float:left; background-color: rgb(65, 74, 85); height: -webkit-fill-available; height: -moz-available; padding-right: 0px">
     <li><br></li>
     <li class="nav-item" id="lihome">
         <a class="nav-link active" id="home-tab" href="/student">Αρχική Σελίδα</a>
@@ -22,7 +26,7 @@
     </li>
 </div>
 
-<div style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%; display: flow-root">
+<div style="background-image:url(../books.jpg);min-height: -webkit-fill-available; min-height: -moz-available;background-size: 100% 100%; display: flow-root">
     <div class="col-9" style="float:left;padding: 0 0 0 0;min-width: 83%;">
         <div class="p-5" style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 60%; margin-top: 10%; margin-left: 10%; border-radius:10px">
             <br>
