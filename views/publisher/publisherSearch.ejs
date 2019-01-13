@@ -22,46 +22,69 @@
     </li>
 </div>
 
-<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-color:rgb(221, 221, 221); background-size: 100% 100%;min-height: -webkit-fill-available;display: flow-root">
-    <div id="searchContent"class="p-5"style="background-color:rgba(6, 4, 12, 0.694); color: white; width: 80%; margin-top: 10%; margin-left: 10%; border-radius:10px">
-            <h4 style="text-align:center">Αναζητείστε εδώ το σύγγραμμα που επιθυμείτε!</h4>
+
+<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%;display: flow-root">
+    <div id="searchContent"class="p-5"style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 80%; margin-top: 5%; margin-left: 10%; border-radius:10px">
+        <div  style="float: right;"class="tooltip"><i class="fas fa-2x fa-question-circle"></i>
+            <span class="tooltiptext">Αναζητείστε συγγράμματα συμπληρώνοντας ένα ή περισσότερα από τα παρακάτω πεδία. Πατήστε "Αναζήτηση" και τα αποτελέσματα θα εμφανιστούν από κάτω!</span>
+        </div>     
+        <h4 style="text-align:center">Αναζητείστε εδώ το σύγγραμμα που επιθυμείτε!</h4>
             <hr>
-            <form id="searchBook" method="" action="" style="width:75%;" class="m-auto">
+            <form id="searchBook" method="" action="" style="width:80%;" class="m-auto">
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputEmail4">Τίτλος</label>
-                        <input type="text" class="form-control" id="inputTitle" placeholder="Book Title">
+                        <label for="inputTitle">Τίτλος</label>
+                        <input type="text" class="form-control" id="inputTitle" placeholder="Τίτλος Συγγράμματος">
                       </div>
+                      <!-- <div class="col-md-1"></div> -->
                       <div class="form-group col-md-6">
-                        <label for="inputPassword4">Συγγραφέας</label>
-                        <input type="text" class="form-control" id="inputAuthor" placeholder="Book Author">
+                        <label for="inputAuthor">Συγγραφέας</label>
+                        <input type="text" class="form-control" id="inputAuthor" placeholder="Συγγραφέας Συγγράμματος">
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label for="inputAddress">ISBN</label>
-                      <input type="text" class="form-control" id="inputISBN" placeholder="Book ISBN">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputISBN">ISBN</label>
+                            <input type="text" class="form-control" id="inputISBN" placeholder="Κωδικός ISBN">
+                        </div>
+                        <!-- <div class="col-md-1"></div> -->
+                        <div class="form-group col-md-6">
+                            <label for="inputKeyword">Λέξη-Κλειδί</label>
+                            <input type="text" class="form-control" id="inputKeyword" placeholder="Λέξη-Κλειδί">
+                        </div>
                     </div>
                     <div class="form-row">
                       <div class="form-group col-md-6">
-                        <label for="inputCity">Εκδότης</label>
-                        <input type="text" class="form-control" id="inputPublisher">
+                        <label for="inputPublisher">Εκδότης</label>
+                        <input type="text" class="form-control" id="inputPublisher" placeholder="Εκδότης Συγγράμματος">
                       </div>
-                      <div class="form-group col-md-4">
-                        <label for="inputState">Κατηγορία</label>
-                        <select id="inputState" class="form-control">
-                          <option selected>Choose...</option>
-                          <option>...</option>
+                      <!-- <div class="col-md-1">y</div> -->
+                      <div class="form-group col-md-3">
+                        <label for="inputCategory">Κατηγορία</label>
+                        <select name="category" class="form-control" id="inputCategory">
+                            <option value="all">Όλες</option>
+                            <option value="Φυσική">ΦΥΣΙΚΗ</option>
+                            <option value="Maths">ΜΑΘΗΜΑΤΙΚΑ</option>
+                            <option value="Chemistry">ΧΗΜΕΙΑ</option>
+                            <option value="ΠΛΗΡΟΦΟΡΙΚΗ">ΠΛΗΡΟΦΟΡΙΚΗ</option>
+                            <option value="ΟΙΚΟΝΟΜΙΚΑ">ΟΙΚΟΝΟΜΙΚΑ</option>
+                            <option value="ΒΙΟΛΟΓΙΑ">ΒΙΟΛΟΓΙΑ</option>
+                            <option value="ΟΙΚΟΝΟΜΙΚΑ">ΟΙΚΟΝΟΜΙΚΑ</option>
+                            <option value="ΦΙΛΟΣΟΦΙΑ">ΦΙΛΟΣΟΦΙΑ</option>
+                            <option value="ΦΙΛΟΛΟΓΙΑ">ΦΙΛΟΛΟΓΙΑ</option>
+                            <option value="ΚΟΙΝΩΝΙΟΛΟΓΙΑ">ΚΟΙΝΩΝΙΟΛΟΓΙΑ</option>
+                            <option value="ΘΕΟΛΟΓΙΑ">ΘΕΟΛΟΓΙΑ</option>
                         </select>
                       </div>
-                      <div class="form-group col-md-2">
-                        <label for="inputZip">Κωδικός Βιβλίου</label>
-                        <input type="text" class="form-control" id="inputNo">
+                      <div class="form-group col-md-3">
+                        <label for="inputNo">Κωδικός Ευδόξου</label>
+                        <input type="text" class="form-control" id="inputNo" placeholder="Κωδικός στον εύδοξο">
                       </div>
                     </div>
-                    <button id="submitSearch" type="submit" class="btn btn-primary">Αναζήτηση</button>
-                  </form>
-            <div id="searchResults" hidden>
-                <h5>Results:</h5>
+                    <button id="submitSearch" type="submit" class="btn btn-light">Αναζήτηση</button>
+            </form>
+            <br>
+            <div style="width:80%;" class="m-auto" id="browseResults">
 
             </div>
             
@@ -76,8 +99,21 @@ $('#submitSearch').on('click', (e) => {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("searchResults").innerHTML = this.responseText;
-                document.getElementById("searchResults").removeAttribute('hidden')
+                var bookArray = JSON.parse(this.responseText);
+                $(".book-listing" ).remove();
+                $(".resultsNum" ).remove();
+                $('#browseResults').append(`<h6 class="resultsNum">Βρέθηκαν ${bookArray.length} συγγράμματα</h6>`)
+                bookArray.forEach(book => {
+                    $('#browseResults').append(
+                        `<details class="book-listing">
+                            <summary><img width="32" height="32"src="/book-flat.png"></img> ${book.title} </i><i style="float:right" class="fas fa-1x fa-caret-down"></i></summary>
+                            <hr><h6>Συγγραφέας: ${book.author} <br> Εκδότης: ${book.publisher} <br>ISBN: ${book.isbn} <br>
+                            Κωδικός στον εύδοξο: ${book.eudoxus_code} <br>Κατηγορία: ${book.category} <br>Λέξεις Κλειδία: ${book.keywords}</h6>
+                        </details>`)  
+                });
+            }
+            else if (this.readyState == 4 && this.status == 404) {
+                $('#browseResults').append('<h6>Did not find any books</h6>')
             }
         };
         params = "book"
@@ -85,12 +121,14 @@ $('#submitSearch').on('click', (e) => {
         author = $('#inputAuthor').val()
         isbn = $('#inputISBN').val()
         publisher = $('#inputPublisher').val()
-        console.log(title);
+        category = $('#inputCategory').val()
         
         if( title )
             params = params + "?title=" + title
         if( author )
             params = params + "?author=" + author
+        if( category )
+            params = params + "?category=" + category    
             
             
         xhttp.open("GET", "/student/search/" + params, true);
@@ -98,3 +136,5 @@ $('#submitSearch').on('click', (e) => {
     })
 
 </script>
+
+<% include publisherFooter.ejs %>

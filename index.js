@@ -4,6 +4,7 @@ var passport              = require('passport');
 var LocalStrategy         = require("passport-local");
 var passportLocalMongoose = require("passport-local-mongoose");
 var User                  = require('./models/user.js');
+var Publisher             = require('./models/publisher.js')
 var bodyParser            = require("body-parser");
 var http                  = require('http');
 var path = require('path')
@@ -45,8 +46,11 @@ app.set('view engine', 'ejs');
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate()));
+passport.use(new LocalStrategy(Publisher.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+passport.serializeUser(Publisher.serializeUser());
+passport.deserializeUser(Publisher.deserializeUser());
 
 //using routes required above
 app.use(publisherRoutes)
