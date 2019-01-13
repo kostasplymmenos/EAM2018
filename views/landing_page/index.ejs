@@ -61,12 +61,26 @@
 
     <!-- Copyright -->
     <div class="footer-copyright text-center py-3">© 2018 Copyright:
-      <a href="https://mdbootstrap.com/bootstrap-tutorial/"> Eudoxus</a>
+      <a style="color: black"href="https://mdbootstrap.com/bootstrap-tutorial/"> Eudoxus</a>
     </div>
     <!-- Copyright -->
 
   </footer>
   <!-- Footer -->
+
+  <script type="text/javascript">
+
+  function createErrorAlert(e,text){
+        //e.preventDefault()
+        $('#alertBox').removeClass()
+        $('#alertBox').addClass('alertError')
+        $('#alertText').text(text)
+        $('#alertBox').attr('hidden',false)
+        $('#alertBox').css('display','block');
+        setTimeout(()=>{$('#alertBox').fadeOut(2000)},3000)
+        
+    }
+  </script>
 
   </body>
 </html>
