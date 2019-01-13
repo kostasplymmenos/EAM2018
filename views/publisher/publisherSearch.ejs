@@ -7,11 +7,16 @@
         <a class="nav-link" id="home-tab" href="/publisher">Αρχική Σελίδα</a>
     </li>
     <li class="nav-item" id="lisearch">
-        <a class="nav-link active" id="search-tab"  href="/publisher/search">Αναζήτηση</a>
+        <a class="nav-link active" id="search-tab"  href="/publisher/search">Αναζήτηση Συγγραμμάτων</a>
     </li>
     <li class="nav-item" id="librowse">
-        <a class="nav-link" id="browse-tab"  href="/publisher/browse">Πλοήγηση</a>
+        <a class="nav-link" id="browse-tab"  href="/publisher/browse">Πλοήγηση Συγγραμμάτων</a>
     </li>
+    <% if(options.signedIn){ %>
+        <li class="nav-item" id="lireghistory">
+            <a class="nav-link" id="reghistory-tab"  href="/publisher/publish">Έκδοση Συγγράμματος</a>
+        </li>
+    <% } %> 
     <li class="nav-item" id="liinfo">
         <a class="nav-link" id="info-tab" href="/publisher/info">Πληροφορίες</a>
     </li>

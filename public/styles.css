@@ -56,6 +56,10 @@ tbody tr:nth-child(even){
 details summary::-webkit-details-marker {
     display:none;
   }
+
+details summary.withMarker::-webkit-details-marker {
+    display:inline-block;
+}  
 details summary:focus {
     outline: none;
 }

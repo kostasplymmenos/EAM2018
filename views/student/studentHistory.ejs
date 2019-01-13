@@ -28,8 +28,16 @@
         <hr>
         
         <div class="col-11 m-auto">
-            <% options.history.forEach(submission => { %>
-                <p><%=submission.timestamp%></p>
+            <% options.history.reverse().forEach(submission => { %>
+                <details>
+                    <summary class="withMarker">Ημερομηνία Δήλωσης: <%=submission.timestamp.toLocaleString()%></summary>
+                    <hr>
+                    <% submission.bookIds.forEach( bookId => { %>
+                        <p>Κωδικος Βιβλιου: <%=bookId%></p>
+                    <%})%>
+                </details>
+                <hr>
+                
             <% })%>
         </div>
         

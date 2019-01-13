@@ -7,16 +7,20 @@
         <a class="nav-link" id="home-tab" href="/publisher">Αρχική Σελίδα</a>
     </li>
     <li class="nav-item" id="lisearch">
-        <a class="nav-link" id="search-tab"  href="/publisher/search">Αναζήτηση</a>
+        <a class="nav-link" id="search-tab"  href="/publisher/search">Αναζήτηση Συγγραμμάτων</a>
     </li>
     <li class="nav-item" id="librowse">
-        <a class="nav-link" id="browse-tab"  href="/publisher/browse">Πλοήγηση</a>
+        <a class="nav-link" id="browse-tab"  href="/publisher/browse">Πλοήγηση Συγγραμμάτων</a>
     </li>
+    <% if(options.signedIn){ %>
+        <li class="nav-item" id="lireghistory">
+            <a class="nav-link" id="reghistory-tab"  href="/publisher/publish">Έκδοση Συγγράμματος</a>
+        </li>
+    <% } %> 
     <li class="nav-item" id="liinfo">
         <a class="nav-link active" id="info-tab" href="/publisher/info">Πληροφορίες</a>
     </li>
 </div>
-
 <div style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%;">
     <div class="col-9" style="float:left;padding: 0 0 0 0;min-width: 83%;">
         <div class="p-5" style="background-color:rgba(6, 4, 12, 0.694); color: white; width: 50%; margin-top: 10%; margin-left: 10%; border-radius:10px">

@@ -1,6 +1,37 @@
 <script type="text/javascript">
-
-</script>
-
-</body>
-</html>
+    $('#signInButton').on('click',function(e){
+        $('#signInModal').modal()
+    })
+    
+    $(document).ready(()=>{
+        var error = $('#err').text()
+        if(error)
+            createErrorAlert(null,error)
+    }) 
+    
+    function createErrorAlert(e,text){
+        //e.preventDefault()
+        $('#alertBox').removeClass()
+        $('#alertBox').addClass('alertError')
+        $('#alertText').text(text)
+        $('#alertBox').attr('hidden',false)
+        $('#alertBox').css('display','block');
+        setTimeout(()=>{$('#alertBox').fadeOut(2000)},3000)
+        
+    }
+    
+    function createSuccessAlert(text){
+        $('#alertBox').removeClass()
+        $('#alertBox').addClass('alertSuccess')
+        $('#alertText').text(text)
+        $('#alertBox').attr('hidden',false)
+        $('#alertBox').css('display','block');
+        setTimeout(()=>{$('#alertBox').fadeOut(2000)},3000)
+        
+        
+    }
+    </script>
+    
+    </body>
+    </html>
+    

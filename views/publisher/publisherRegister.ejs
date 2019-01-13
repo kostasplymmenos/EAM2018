@@ -10,13 +10,13 @@
         <a class="nav-link" id="search-tab"  href="/publisher/search">Αναζήτηση Συγγραμμάτων</a>
     </li>
     <li class="nav-item" id="librowse">
-        <a class="nav-link" id="browse-tab"  href="/publisher/browse">Πλοήγηση & Δήλωση Συγγραμμάτων</a>
+        <a class="nav-link" id="browse-tab"  href="/publisher/browse">Πλοήγηση Συγγραμμάτων</a>
     </li>
     <% if(options.signedIn){ %>
         <li class="nav-item" id="lireghistory">
-            <a class="nav-link" id="reghistory-tab"  href="/publisher/history">Ιστορικό Δηλώσεων</a>
+            <a class="nav-link" id="reghistory-tab"  href="/publisher/publish">Έκδοση Συγγράμματος</a>
         </li>
-    <% } %>  
+    <% } %> 
     <li class="nav-item" id="liinfo">
         <a class="nav-link" id="info-tab" href="/publisher/info">Πληροφορίες</a>
     </li>
@@ -30,7 +30,7 @@
             <div class="form-group row">
                 <label for="inputEmail" class="col-sm-3 col-form-label">Διεύθυνση email</label>
                 <div class="col-sm-9">
-                    <input name="username" type="email" class="form-control" id="inputEmail" placeholder="Email" required>
+                    <input name="username" type="email" class="form-control" id="inputEmail" placeholder="Publisher Email" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -42,70 +42,28 @@
             <div class="form-group row">
                 <label for="inputPassword2" class="col-sm-3 col-form-label">Επαλήθευση</label>
                 <div class="col-sm-9">
-                    <input name="passwordCheck" type="password" class="form-control" id="inputPassword2" placeholder="Password" required>
+                    <input name="passwordCheck" type="password" class="form-control" id="inputPassword2" placeholder="Confirm Password" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputFirstName" class="col-sm-3 col-form-label">Όνομα</label>
+                <label for="inputName" class="col-sm-3 col-form-label">Όνομα εκδοτικού οίκου</label>
                 <div class="col-sm-9">
-                    <input name="firstname" type="text" class="form-control" id="inputFirstName" placeholder="First Name" required>
+                    <input name="publisherName" type="text" class="form-control" id="inputName" placeholder="Publisher Name" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputLastName" class="col-sm-3 col-form-label">Επίθετο</label>
+                <label for="inputTel" class="col-sm-3 col-form-label">Κύριος Αριθμός Τηλεφώνου</label>
                 <div class="col-sm-9">
-                    <input name="lastname" type="text" class="form-control" id="inputLastName" placeholder="Last Name" required>
+                    <input name="tel" type="text" class="form-control" id="inputTel" placeholder="Main Telephone Number" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="inputUni" class="col-sm-3 col-form-label">Πανεπιστήμιο</label>
+                <label for="inputAddress" class="col-sm-3 col-form-label">Κύρια Διεύθυνση Διανομής</label>
                 <div class="col-sm-9">
-                    <input name="university" type="text" class="form-control" id="inputUni" placeholder="University name" required>
+                    <input name="address" type="text" class="form-control" id="inputAddress" placeholder="Main Address" required>
                 </div>
             </div>
-            <div class="form-group row">
-                <label for="inputDepartment" class="col-sm-3 col-form-label">Τμήμα</label>
-                <div class="col-sm-9">
-                    <input name="department" type="text" class="form-control" id="inputDepartment" placeholder="University Department" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputReg" class="col-sm-3 col-form-label">Αριθμός Μητρώου</label>
-                <div class="col-sm-9">
-                    <input name="regNum" type="text" class="form-control" id="inputReg" placeholder=" Department's Registry Number" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputTel" class="col-sm-3 col-form-label">Κινητό</label>
-                <div class="col-sm-9">
-                    <input name="tel" type="text" class="form-control" id="inputTel" placeholder="Mobile Number">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="inputBday" class="col-sm-3 col-form-label">Ημ Γέννησης</label>
-                <div class="col-sm-9">
-                    <input name="bday" type="date" class="form-control" id="inputBday" placeholder="Birth Date">
-                </div>
-            </div>
-            <fieldset class="form-group">
-                <div class="row">
-                <legend class="col-form-label col-sm-3 pt-0">Επίπεδο Σπουδών</legend>
-                <div class="col-sm-9">
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                    <label class="form-check-label" for="gridRadios1">
-                        Προπτυχιακό
-                    </label>
-                    </div>
-                    <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                    <label class="form-check-label" for="gridRadios2">
-                        Μεταπτυχιακό
-                    </label>
-                    </div>
-                </div>
-                </div>
-            </fieldset>
+            
             
             <div class="form-group row">
                 <div class="col-sm-10">

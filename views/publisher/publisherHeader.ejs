@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../styles.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   </head>
 <body style="background-color:#ebeff1">
 
@@ -16,28 +17,44 @@
     Εύδοξος
   </a>
 
-  <form action="/login" method="post" class="form-inline">
+  <!-- <form action="/login" method="post" class="form-inline">
     <input name="username" class="form-control mr-sm-2" type="email" placeholder="Your Email">
     <input name="password" class="form-control mr-sm-2" type="password" placeholder="Your Password">
     <button class="btn btn-light my-2 my-sm-0" name="loginbtn" type="submit">Login</button>
-  </form>
+  </form> -->
+   
 
   <ul style="margin-bottom:0px">
+      <% if(!options.signedIn){ %>
+        <pre style="color:white; display: inline">Συνδεδεμένος ως Επισκέπτης</pre>
+      <%}%> 
+
     <% if(!options.signedIn){ %>
-        <a href="/help">
-            <button class="btn btn-default btn-light" type="button" name="signup">Εγγραφή</button>
-          </a>
+        
+            <button class="btn btn-default btn-light" type="button" id="signInButton"name="signup">Σύνδεση</button>
+          
     <% } else {%>
-          <a href="/help">
+      <pre id="sessionName"style="color:white; display: inline">Συνδεδεμένος ως <%=options.user.name%></pre>
+          <a href="/publisher/logout">
+            <button class="btn btn-default btn-light" type="button" name="signup">Αποσύνδεση</button>
+          </a>
+          <a href="/publisher/profile">
             <button class="btn btn-default btn-light" type="button" name="signup">Προφίλ</button>
           </a>
     <% } %>
-          <a href="/help">
-            <button class="btn btn-default btn-light" type="button" name="signup">Βοήθεια</button>
-          </a>
+          
+            <button class="btn btn-default btn-light" type="button" name="signup" onclick="createErrorAlert(event,'Coming soon')">Βοήθεια</button>
+          
   </ul>
 
 
 </nav>
+
+
+<% include signInModalPublisher.ejs %>
+
+<div id="alertBox"class="" hidden>
+  <h6 id="alertText">This is an alert box.</h6>
+</div>
 
 

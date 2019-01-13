@@ -6,20 +6,11 @@ var Schema = mongoose.Schema;
 var PublisherSchema = new mongoose.Schema({
     email    : String,
     password : String,
-    firstname: String,
-    lastname : String,
+    publisherName: String,
     telephone: String,
-    university: String,
-    department: String,
-    regNumber: String,
-    courses: [{
-        type: String
-    }],
-    bookSubmissions : [{
-        timestamp: Date,
-        bookIds: [{
-            type: Schema.Types.ObjectId, ref: "Book"
-        }]
+    address  : String,
+    booksPublished : [{
+        type: Schema.Types.ObjectId, ref: "Book"
     }]
 });
 PublisherSchema.plugin(passportLocalMongoose,{usernameField:"email"});
