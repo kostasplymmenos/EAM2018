@@ -69,7 +69,7 @@
             </div>
             <div class="col-md-1"></div>
             <%if(options.signedIn){%>
-                <button style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light" id="registerBooks">Δήλωση</button>
+                <button disabled style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light" id="registerBooks">Δήλωση</button>
             <%} else {%>
                 <button disabled style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light tooltip">Δήλωση <span class="tooltiptext">Δεν είστε συνδεδεμένος </span></button>
             <% } %>        
@@ -106,6 +106,10 @@ $(document).ready( (e) => {
             //add event listener for checkboxes after they are created above
             $('.book-checked').on('click', ev => {
                 $('#numBooksChecked').text(`Έχετε επιλέξει ${$('input[type="checkbox"]:checked').length} συγγράμματα`)
+                if($('input[type="checkbox"]:checked').length)
+                    $('#registerBooks').removeAttr('disabled')
+                else    
+                    $('#registerBooks').attr('disabled',true)
             })
             
         }
@@ -139,6 +143,10 @@ $('#categorySelect').on('change', (ev) => {
             //add event listener for checkboxes after they are created above
             $('.book-checked').on('click', (ev) => {
                 $('#numBooksChecked').text(`Έχετε επιλέξει ${$('input[type="checkbox"]:checked').length} συγγράμματα`)
+                if($('input[type="checkbox"]:checked').length)
+                    $('#registerBooks').removeAttr('disabled')
+                else    
+                    $('#registerBooks').attr('disabled',true)
             })
                 
             }

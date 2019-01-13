@@ -28,6 +28,9 @@
         <hr>
         
         <div class="col-11 m-auto">
+            <% if(!options.history.length){ %>
+                <h6>Δεν έχετε πραγματοποιήσει καμία δήλωση</h6>
+            <%}%>
             <% options.history.reverse().forEach(submission => { %>
                 <details>
                     <summary class="withMarker">Ημερομηνία Δήλωσης: <%=submission.timestamp.toLocaleString()%></summary>
