@@ -34,7 +34,7 @@
             <button class="btn btn-default btn-light" type="button" id="signInButton"name="signup">Σύνδεση</button>
           
     <% } else {%>
-      <pre style="color:white; display: inline">Συνδεδεμένος ως <%=options.user.firstname%></pre>
+      <pre id="sessionName"style="color:white; display: inline">Συνδεδεμένος ως <%=options.user.firstname%></pre>
           <a href="/student/logout">
             <button class="btn btn-default btn-light" type="button" name="signup">Αποσύνδεση</button>
           </a>

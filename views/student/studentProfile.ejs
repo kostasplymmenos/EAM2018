@@ -24,7 +24,11 @@
 
 <div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%; display:flow-root">
     <div id="searchContent"class="p-5"style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 80%; margin-top: 5%; margin-left: 10%; border-radius:10px">
+        <div  style="float: right;"class="tooltip"><i class="fas fa-2x fa-question-circle"></i>
+            <span class="tooltiptext">Μπορείτε να τροποποιήσετε τα στοιχεία σας πατώντας πάνω στο αντίστοιχο πεδίο και μετά αποθηκεύστε το πατώντας "Αλλαγή" </span>
+        </div> 
         <h4 style="text-align:center">Η σελίδα προφίλ σας!</h4>
+        
         <hr>
         
         <div class="col-11 m-auto">
@@ -32,36 +36,43 @@
                 <tbody>
                 <tr >
                     <td class="" style="width:30%">Αριθμός Μητρώου</td>
-                    <td class=""style="width:70%"><%=options.user.regNumber%></td>       
+                    <td class=""style="width:70%"><%=options.user.regNumber%></td>
+                    <td></td>  
                 </tr>
                 <tr>
                     <td class="" style="width:30%">Διεύθυνση email</td>
-                    <td class=""style="width:70%"><%=options.user.email%></td>   
+                    <td class=""style="width:70%"><%=options.user.email%></td>
+                    <td></td>   
                 
                 </tr>
                 <tr >
                     <td class="" style="width:30%">'Ονομα</td>
-                    <td class=""style="width:70%"><%=options.user.firstname%></td>   
+                    <td contenteditable="true" class="" id="changeName" style="width:70%"><%=options.user.firstname%></td>
+                    <td><button id="changeNameBtn" class="btn btn-primary"><i class="far fa-edit"></i> Αλλαγή</button></td>
                 
                 </tr>
                 <tr>
                     <td class="" style="width:30%">Επώνυμο</td>
-                    <td class=""style="width:70%"><%=options.user.lastName%></td>   
+                    <td contenteditable="true" id="changeLastName" class=""style="width:70%"> <%=options.user.lastName%></td>
+                    <td><button id="changeLastNameBtn" class="btn btn-primary"><i class="far fa-edit"></i> Αλλαγή</button></td> 
                 
                 </tr>
                 <tr>
                     <td class="" style="width:30%">Πανεπιστήμιο</td>
-                    <td class=""style="width:70%"><%=options.user.university%></td>   
+                    <td class=""style="width:70%"><%=options.user.university%></td>  
+                    <td></td>  
                 
                 </tr>
                 <tr>
                     <td class="" style="width:30%">Τμήμα</td>
                     <td class=""style="width:70%"><%=options.user.department%></td>   
+                    <td></td> 
                 
                 </tr>
                 <tr>
                     <td class="" style="width:30%">Κινητό Τηλέφωνο</td>
-                    <td class=""style="width:70%"><%=options.user.telephone%></td>   
+                    <td contenteditable="true" id="changeTel" class=""style="width:70%"><%=options.user.telephone%></td>  
+                    <td><button id="changeTelBtn" class="btn btn-primary"><i class="far fa-edit"></i> Αλλαγή</button></td>  
                 
                 </tr>
                 </tbody>
@@ -71,6 +82,76 @@
             
     </div>
 </div>
+
+<script>
+
+$('#changeNameBtn').on('click', ev => {
+    ev.preventDefault()
+
+    var updateQuery = {
+        firstname: $('#changeName').text()
+    }
+
+    
+    $.ajax({
+            type: "PUT",
+            url: '/student/update',
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8', 
+            data: JSON.stringify(updateQuery),
+            success: function(response) {
+                console.log(response);
+                $('#sessionName').html(`Συνδεδεμένος ως ${updateQuery.firstname}`)
+                createSuccessAlert('Η αλλαγή του ονόματος σας έγινε επιτυχώς!')
+            }
+    })
+})
+
+$('#changeLastNameBtn').on('click', ev => {
+    ev.preventDefault()
+
+    var updateQuery = {
+        lastname: $('#changeLastName').text()
+    }
+
+    
+    $.ajax({
+            type: "PUT",
+            url: '/student/update',
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8', 
+            data: JSON.stringify(updateQuery),
+            success: function(response) {
+                console.log(response);
+                createSuccessAlert('Η αλλαγή του επιθέτου σας έγινε επιτυχώς!')
+            }
+    })
+})
+
+$('#changeTelBtn').on('click', ev => {
+    ev.preventDefault()
+
+    var updateQuery = {
+        telephone: $('#changeTel').text()
+    }
+
+    
+    $.ajax({
+            type: "PUT",
+            url: '/student/update',
+            dataType: 'json',
+            contentType: 'application/json; charset=UTF-8', 
+            data: JSON.stringify(updateQuery),
+            success: function(response) {
+                console.log(response);
+                createSuccessAlert('Η αλλαγή του κινητού σας αριθμού έγινε επιτυχώς!')
+            }
+    })
+})
+
+
+
+</script>
 
 
 <% include studentFooter.ejs %>
