@@ -21,65 +21,46 @@
         <a class="nav-link" id="info-tab" href="/publisher/info">Πληροφορίες</a>
     </li>
 </div>
-<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab"style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%; display:flow-root">
+
+<div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%; display: flow-root">
     <div id="searchContent"class="p-5"style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 80%; margin-top: 5%; margin-left: 10%; border-radius:10px">
-        <div  style="float: right;"class="tooltip"><i class="fas fa-2x fa-question-circle"></i>
-            <span class="tooltiptext">Μπορείτε να δηλώσετε συγγράμματα κάνοντας κλίκ στον τίτλο και πατώντας το checkbox του βιβλίου που επιθυμείτε και ύστερα το κουμπί "Δήλωση" </span>
-        </div> 
-        <h4 style="text-align:center">Πλοηγηθείτε στα συγγράμματα και πραγματοποιείστε την δήλωση σας!</h4> 
+        <h4 style="text-align:center">Γραφτείτε στην εφαρμογή!</h4>
         <hr>
-        <div class="form-row text-centered">
-            <div class="form-group col-md-3">
-                <label for="inputState">Κατηγορία</label>
-                <select name="category" class="form-control" id="categorySelect">
-                    <option value="all">All</option>
-                    <option value="Φυσική">ΦΥΣΙΚΗ</option>
-                    <option value="Maths">ΜΑΘΗΜΑΤΙΚΑ</option>
-                    <option value="Chemistry">ΧΗΜΕΙΑ</option>
-                    <option value="ΠΛΗΡΟΦΟΡΙΚΗ">ΠΛΗΡΟΦΟΡΙΚΗ</option>
-                    <option value="ΟΙΚΟΝΟΜΙΚΑ">ΟΙΚΟΝΟΜΙΚΑ</option>
-                    <option value="ΒΙΟΛΟΓΙΑ">ΒΙΟΛΟΓΙΑ</option>
-                    <option value="ΟΙΚΟΝΟΜΙΚΑ">ΟΙΚΟΝΟΜΙΚΑ</option>
-                    <option value="ΦΙΛΟΣΟΦΙΑ">ΦΙΛΟΣΟΦΙΑ</option>
-                    <option value="ΦΙΛΟΛΟΓΙΑ">ΦΙΛΟΛΟΓΙΑ</option>
-                    <option value="ΚΟΙΝΩΝΙΟΛΟΓΙΑ">ΚΟΙΝΩΝΙΟΛΟΓΙΑ</option>
-                    <option value="ΘΕΟΛΟΓΙΑ">ΘΕΟΛΟΓΙΑ</option>
-                </select>
+        <form id="signupForm" method="POST" action="/student/register" style="width:75%;" class="m-auto">
+            <div class="form-group row">
+                <label for="inputTitle" class="col-sm-3 col-form-label">Τίτλος Συγγράμματος</label>
+                <div class="col-sm-9">
+                    <input name="title" type="text" class="form-control" id="inputTitle" placeholder="Τίτλος" required>
+                </div>
             </div>
-
-            <div class="form-group col-md-4">
-                    <label for="inputState">ΠΑΝΕΠΙΣΤΗΜΙΟ</label>
-                    <select name="category" class="form-control" id="categorySelect">
-                        <option value="ΕΘΝΙΚΟ ΚΑΠΟΔΙΣΤΡΙΑΚΟ ΠΑΝΕΠΙΣΤΗΜΙΟ ΑΘΗΝΩΝ">ΕΘΝΙΚΟ ΚΑΠΟΔΙΣΤΡΙΑΚΟ ΠΑΝΕΠΙΣΤΗΜΙΟ ΑΘΗΝΩΝ</option>
-                    </select>
-                
+            <div class="form-group row">
+                <label for="inputAuthor" class="col-sm-3 col-form-label">Συγγραφέας</label>
+                <div class="col-sm-9">
+                    <input name="author" type="text" class="form-control" id="inputAuthor" placeholder="Συγγραφέας" required>
+                </div>
             </div>
-
-            <div class="form-group col-md-3">
-                    <label for="inputState">Τμήμα Πανεπιστημίου</label>
-                    <select name="category" class="form-control" id="categorySelect">
-                        <option value="ΜΑΘΗΜΑΤΙΚΟ">ΜΑΘΗΜΑΤΙΚΟ</option>
-                        <option value="ΦΥΣΙΚΟ">ΦΥΣΙΚΟ</option>
-                        <option value="ΙΑΤΡΙΚΗ">ΙΑΤΡΙΚΗ</option>
-                        <option value="ΧΗΜΙΚΟ">ΧΗΜΙΚΟ</option>
-                        <option value="ΟΙΚΟΝΟΜΙΚΟ">ΟΙΚΟΝΟΜΙΚΟ</option>
-                        <option value="ΠΛΗΡΟΦΟΡΙΚΗ">ΠΛΗΡΟΦΟΡΙΚΗ</option>
-                    </select>
+            <div class="form-group row">
+                <label for="inputCategory" class="col-sm-3 col-form-label">Κατηγορία</label>
+                <div class="col-sm-9">
+                    <input name="category" type="text" class="form-control" id="inputCategory" placeholder="Κατηγορία" required>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputKeywords" class="col-sm-3 col-form-label">Λέξεις Κλειδία</label>
+                <div class="col-sm-9">
+                    <input name="keywords" type="text" class="form-control" id="inputKeywords" placeholder="Λέξεις Κλειδία (Διαχωρείστε με ',')" required>
+                </div>
+            </div>
             
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-light">Καταχώρηση</button>
+                </div>
+                <%if (options.error){ %>
+                    <p><%=options.error%></p>
+                <% } %>    
             </div>
-            <div class="col-md-1"></div>
-            <%if(options.signedIn){%>
-                <button style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light" id="registerBooks">Δήλωση</button>
-            <%} else {%>
-                <button disabled style="height: auto;margin-top: auto;margin-bottom: 1.5%;"class="btn btn-light tooltip">Δήλωση <span class="tooltiptext">Δεν είστε συνδεδεμένος </span></button>
-            <% } %>        
-        </div>
-        <hr>
-        <h6 id="numBooksChecked">Έχετε επιλέξει 0 συγγράμματα</h6>
-        <div id="browseResults" style="border-radius:10px">
-
-        </div>
-        
+            </form>
             
     </div>
 </div>

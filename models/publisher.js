@@ -16,8 +16,8 @@ var PublisherSchema = new mongoose.Schema({
 PublisherSchema.plugin(passportLocalMongoose,{usernameField:"email"});
 
 PublisherSchema.statics.serializeUser = function() {
-    return function(user, cb) {
-        cb(null, user._id);
+    return function(publisher, cb) {
+        cb(null, publisher._id);
     }
 };
 

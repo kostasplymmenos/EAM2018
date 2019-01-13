@@ -45,11 +45,9 @@ app.set('view engine', 'ejs');
 //passport stuff, used for login and user registration
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.use(new LocalStrategy(Publisher.authenticate()));
-passport.serializeUser(User.serializeUser());
+passport.use('local-student',new LocalStrategy(User.authenticate()));
+passport.use('local-publisher',new LocalStrategy(Publisher.authenticate()));
 passport.deserializeUser(User.deserializeUser());
-passport.serializeUser(Publisher.serializeUser());
 passport.deserializeUser(Publisher.deserializeUser());
 
 //using routes required above

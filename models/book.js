@@ -10,9 +10,7 @@ var BookSchema = new mongoose.Schema({
     }],
     category: String,
     title: String,
-    courses : [{
-        type: String
-    }],
+    quantity: Number
     
 });
 
