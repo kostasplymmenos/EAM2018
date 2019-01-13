@@ -101,6 +101,7 @@ $('#submitSearch').on('click', (e) => {
             if (this.readyState == 4 && this.status == 200) {
                 var bookArray = JSON.parse(this.responseText);
                 $(".book-listing" ).remove();
+                $("#notFound" ).remove();
                 $(".resultsNum" ).remove();
                 $('#browseResults').append(`<h6 class="resultsNum">Βρέθηκαν ${bookArray.length} συγγράμματα</h6>`)
                 bookArray.forEach(book => {
@@ -113,7 +114,7 @@ $('#submitSearch').on('click', (e) => {
                 });
             }
             else if (this.readyState == 4 && this.status == 404) {
-                $('#browseResults').append('<h6>Did not find any books</h6>')
+                $('#browseResults').append('<h6 id="notFound">Did not find any books</h6>')
             }
         };
         params = "book"

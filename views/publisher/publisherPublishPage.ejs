@@ -24,9 +24,9 @@
 
 <div class="tab-pane" id="search" role="tabpanel" aria-labelledby="search-tab" style="background-image:url(../books.jpg);min-height: -webkit-fill-available;background-size: 100% 100%; display: flow-root">
     <div id="searchContent"class="p-5"style="background-color:rgba(65, 74, 85, 0.916); color: white; width: 80%; margin-top: 5%; margin-left: 10%; border-radius:10px">
-        <h4 style="text-align:center">Γραφτείτε στην εφαρμογή!</h4>
+        <h4 style="text-align:center">Εδώ μπορείτε να εκδώσετε ηλεκτρονικά συγγράμματα!</h4>
         <hr>
-        <form id="signupForm" method="POST" action="/student/register" style="width:75%;" class="m-auto">
+        <form id="" method="" action="s" style="width:75%;" class="m-auto">
             <div class="form-group row">
                 <label for="inputTitle" class="col-sm-3 col-form-label">Τίτλος Συγγράμματος</label>
                 <div class="col-sm-9">
@@ -51,10 +51,22 @@
                     <input name="keywords" type="text" class="form-control" id="inputKeywords" placeholder="Λέξεις Κλειδία (Διαχωρείστε με ',')" required>
                 </div>
             </div>
+            <div class="form-group row">
+                    <label for="inputISBN" class="col-sm-3 col-form-label">ISBN</label>
+                    <div class="col-sm-9">
+                        <input name="isbn" type="text" class="form-control" id="inputISBN" placeholder="ISBN" required>
+                    </div>
+                </div>
+            <div class="form-group row">
+                    <label for="inputQuantity" class="col-sm-3 col-form-label">Απόθεμα</label>
+                    <div class="col-sm-9">
+                        <input name="quantity" type="number" class="form-control" id="inputQuantity" placeholder="Απόθεμα Συγγράμματος" required>
+                    </div>
+                </div>
             
             <div class="form-group row">
                 <div class="col-sm-10">
-                    <button type="submit" class="btn btn-light">Καταχώρηση</button>
+                    <button id="publishBtn"type="submit" class="btn btn-light">Καταχώρηση</button>
                 </div>
                 <%if (options.error){ %>
                     <p><%=options.error%></p>
@@ -136,25 +148,30 @@ $('#categorySelect').on('change', (ev) => {
         xhttp.send();
     })
 
-    $('#registerBooks').on('click', ev => {
+    $('#publishBtn').on('click', ev => {
         ev.preventDefault()
-        if(!confirm('Είστε σίγουρος ότι θελετε να κάνετε δήλωση συγγραμμάτων;'))
+        if(!confirm('Είστε σίγουρος ότι θελετε να εκδώσετε το σύγγραμμα;'))
             return
-        var books = []
-        $('input[type="checkbox"]:checked').each((i,obj) => {
-            books.push( obj.getAttribute('name') );
-        })
         
+        var book = {
+            title: $('#inputTitle').val(),
+            author: $('#inputAuthor').val(),
+            category: $('#inputCategory').val(),
+            quantity: $('#inputQuantity').val(),
+            isbn: $('#inputISBN').val(),
+            keywords: $('#inputKeywords').val(),
+
+        }
         $.ajax({
             type: "POST",
-            url: '/student/registerBooks',
+            url: '/publisher/publishBooks',
             dataType: 'json',
             contentType: 'application/json; charset=UTF-8', 
-            data: JSON.stringify(books),
+            data: JSON.stringify(book),
             success: function(response) {
                 console.log(response);
                 
-                createSuccessAlert('Η δήλωση συγγραμμάτων έγινε με επιτυχία. Μπορείτε να επαληθεύσετε την δήλωση σας στην καρτέλα "Ιστορικό δηλώσεων"')
+                createSuccessAlert('Η έκδοση συγγραμμάτος έγινε με επιτυχία')
             }
     });
     })
